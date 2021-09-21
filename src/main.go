@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	connection.Connect() // Connect
+	conn := connection.ConnectFactory() // Connect
 }
