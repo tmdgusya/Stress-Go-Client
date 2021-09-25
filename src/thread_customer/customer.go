@@ -10,7 +10,7 @@ type Customer struct {
 	period int
 }
 
-func (c *Customer) connect(customer_id int, jobs <- chan string, result chan <- bool) {
+func (c *Customer) ConnectUser(customer_id int, jobs <- chan int, result chan <- bool) {
 	for job := range jobs {
 		fmt.Println("Customer", customer_id ,"Connecting ....", job);
 		time.Sleep(time.Duration(int(time.Second) * c.period));
@@ -24,4 +24,8 @@ func (c *Customer) connect(customer_id int, jobs <- chan string, result chan <- 
 			result <- true
 		} 
 	}
+}
+
+func CustomerFactory(period int) *Customer {
+	return &Customer{period: period}
 }
