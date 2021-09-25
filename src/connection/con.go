@@ -2,14 +2,15 @@ package connection
 
 import (
 	"log"
-	"net"
+
+	"github.com/go-stomp/stomp"
 )
 
 const SERVER_DOMAIN = "http://localhost"
 const SOCKET_SERVER_PORT = ":8080"
 
-func ConnectFactory() (net.Conn, error) {
-	conn, err := net.Dial("tcp", SERVER_DOMAIN+SOCKET_SERVER_PORT)
+func ConnectFactory() (*stomp.Conn, error) {
+	conn, err := stomp.Dial("tcp", SERVER_DOMAIN+SOCKET_SERVER_PORT)
 	if err != nil {
 		log.Println(err)
 	}
