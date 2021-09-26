@@ -73,10 +73,8 @@ func main() {
 		log.Fatalf("couldn't create stomp connection: %v", err)
 	}
 
-	mdCh, err := sc.Subscribe(stomp.Headers{
-		stomp.HK_DESTINATION, "/topic/chat",
-		stomp.HK_ID, stomp.Uuid(),
-	})
+	mdCh, err := sc.Subscribe(stomp.Headers{stomp.HK_DESTINATION, "/topic/chat"})
+	
 	if err != nil {
 		log.Fatalf("failed to suscribe greeting message: %v", err)
 	}
