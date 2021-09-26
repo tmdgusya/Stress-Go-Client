@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"net/url"
 
 	stomp "github.com/drawdy/stomp-ws-go"
@@ -48,9 +49,13 @@ func main() {
 		Path:   "/stomp",
 	}
 
+	hh := http.Header{}
+
+	hh.Set("origin", "**")
+
 	log.Println(u.String())
 
-	conn, resp, err := websocket.DefaultDialer.Dial(u.String(), nil)
+	conn, resp, err := websocket.DefaultDialer.Dial(u.String(), hh)
 	if err != nil {
 		log.Fatalf("couldn't connect to %v: %v", u.String(), err)
 	}
