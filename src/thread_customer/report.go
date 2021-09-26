@@ -6,11 +6,11 @@ type Report struct {
 }
 
 func (r *Report) SuccessTestResult() {
-	r.fail_count += 1
+	r.success_count += 1
 }
 
 func (r *Report) FailTestResult() {
-	r.success_count += 1
+	r.fail_count += 1
 }
 
 func (r *Report) GetSuccessCount() int {
